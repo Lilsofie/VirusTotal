@@ -5,59 +5,43 @@ info:
 servers:
   - url: https://www.virustotal.com/api/v3
 define: &apikey 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+
 paths:
-  /urls:
-    post:
-      summary: Submit a URL for scanning
-      operationId: submitUrl
-      parameters:
-        - in: header
-          name: *apikey
-          required: true
-          schema:
-            type: string
-          description: API key
-      requestBody:
+  /ip_addresses/{input_ip}:
+   get:
+    summary: Get information about an IP address
+    operationId: getIpInfo
+    parameters:
+      - in: path
+        name: input_ip
         required: true
+        schema:
+          type: string
+        description: The IP address
+    responses:
+      '200':
+        description: Successful response
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               type: object
-              properties:
-                url:
-                  type: string
-                  description: The URL to be scanned
-  /analyses/{input_id}:
-    get:
-      summary: Get analysis results
-      operationId: getAnalysis
-      parameters:
-        - in: path
-          name: input_id
-          required: true
-          schema:
-            type: string
-          description: The ID of the analysis
-        - in: header
-          name: *apikey
-          required: true
-          schema:
-            type: string
-          description: API key
-  /ip_addresses/{input_ip}:
-    get:
-      summary: Get information about an IP address
-      operationId: getIpInfo
-      parameters:
-        - in: path
-          name: input_ip
-          required: true
-          schema:
-            type: string
-          description: The IP address
-        - in: header
-          name: *apikey
-          required: false
-          schema:
-            type: string
-          description: API key
+      '400':
+        description: Bad request
+      '401':
+        description: Unauthorized
+      '500':
+        description: Internal server error
+    security:
+      - apiKeyAuth: *apikey
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key
+      x-api-key: your_api_key_here
+
+security:
+  - apiKeyAuth: *apikey
