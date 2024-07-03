@@ -57,7 +57,7 @@ paths:
           description: The IP address
         - in: header
           name: *apikey
-          required: true
+          required: false
           schema:
             type: string
           description: API key
