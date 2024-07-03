@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: VirusTotal API
+  version: "v3"
+servers:
+  - url: https://www.virustotal.com/api/v3
+paths:
+  /urls:
+    post:
+      summary: Submit a URL for scanning
+      operationId: submitUrl
+      parameters:
+        - in: header
+          name: 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+          required: true
+          schema:
+            type: string
+          description: API key
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL to be scanned
+  /analyses/{input_id}:
+    get:
+      summary: Get analysis results
+      operationId: getAnalysis
+      parameters:
+        - in: path
+          name: input_id
+          required: true
+          schema:
+            type: string
+          description: The ID of the analysis
+        - in: header
+          name: 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+          required: true
+          schema:
+            type: string
+          description: API key
+  /ip_addresses/{input_ip}:
+    get:
+      summary: Get information about an IP address
+      operationId: getIpInfo
+      parameters:
+        - in: path
+          name: input_ip
+          required: true
+          schema:
+            type: string
+          description: The IP address
+        - in: header
+          name: 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+          required: true
+          schema:
+            type: string
+          description: API key
