@@ -11,7 +11,7 @@ paths:
       operationId: submitUrl
       parameters:
         - in: header
-          name: 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+          name: x-apikey
           required: true
           schema:
             type: string
@@ -38,7 +38,7 @@ paths:
             type: string
           description: The ID of the analysis
         - in: header
-          name: 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+          name: x-apikey
           required: true
           schema:
             type: string
@@ -55,7 +55,7 @@ paths:
             type: string
           description: The IP address
         - in: header
-          name: 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+          name: x-apikey
           required: true
           schema:
             type: string
