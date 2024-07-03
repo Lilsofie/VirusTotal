@@ -44,7 +44,7 @@ paths:
           schema:
             type: string
           description: API key
-  /ip_addresses/${{input_ip}}:
+  /ip_addresses/{input_ip}:
     get:
       summary: Get information about an IP address
       operationId: getIpInfo
