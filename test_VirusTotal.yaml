@@ -4,7 +4,7 @@ info:
   version: "v3"
 servers:
   - url: https://www.virustotal.com/api/v3
-define: &apikey 643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068
+define: &apikey apikey
 
 paths:
   /ip_addresses/{input_ip}:
@@ -39,9 +39,9 @@ components:
     apiKeyAuth:
       type: apiKey
       in: header
-      name: X-Api-Key
+      name: X-Apikey
       description: API key
-      x-api-key: your_api_key_here
+      x-api-key: *apikey
 
 security:
-  - apiKeyAuth: *apikey
+  - X-Apikey: *apikey
