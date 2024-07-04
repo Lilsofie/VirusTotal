@@ -1,0 +1,11 @@
+Descriptor: 
+ Name: Virus Total API plug-in 
+ DisplayName: Virus Total API plug-in 
+ Description: check IP address & URL 
+ DescriptionForModel: submit IP address/ URL to get analysis report  
+
+SkillGroups: 
+  - Format: API 
+    Settings: 
+# Replace this with your own URL where the OpenAPI spec file is located. 
+       OpenApiSpecUrl: https://raw.githubusercontent.com/Lilsofie/VirusTotal/main/test_VirusTotal.yaml
