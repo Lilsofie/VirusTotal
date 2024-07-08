@@ -20,7 +20,7 @@ with open("test_VirusTotal.yaml", "r") as file:
 base_url = "https://www.virustotal.com/api/v3"
 path_template = "/ip_addresses/{input_ip}"
 method = "get"
-ip_address = "209.85.208.52"  # Example input value for the path parameter
+ip_address = "220.248.76.186"  # Example input value for the path parameter
 
 # Replace path parameter with the actual value
 path = path_template.replace("{input_ip}", ip_address)
@@ -31,16 +31,11 @@ correct_path_template = find_path_template(spec, path)
 if not correct_path_template:
     raise ValueError("Path template not found in OpenAPI spec")
 
-# Extract headers (e.g., Authorization)
-headers = {}
-if 'security' in spec['paths'][correct_path_template][method]:
-    security_schemes = spec['paths'][correct_path_template][method]['security']
-    for scheme in security_schemes:
-        for scheme_name in scheme:
-            security_scheme = spec['components']['securitySchemes'][scheme_name]
-            if security_scheme['type'] == 'apiKey' and security_scheme['in'] == 'header':
-                headers[security_scheme['name']] = "643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068"  # Replace with your actual API key
+# Authorization
 
+headers = {
+    "X-Apikey": "643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068"
+}
 # Make the API call
 response = requests.request(method.upper(), url, headers=headers)
 
