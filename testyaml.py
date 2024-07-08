@@ -20,7 +20,7 @@ with open("test_VirusTotal.yaml", "r") as file:
 base_url = "https://www.virustotal.com/api/v3"
 path_template = "/ip_addresses/{input_ip}"
 method = "get"
-ip_address = "220.248.76.186"  # Example input value for the path parameter
+ip_address = "random IP address"  # Example input value for the path parameter
 
 # Replace path parameter with the actual value
 path = path_template.replace("{input_ip}", ip_address)
@@ -34,7 +34,7 @@ if not correct_path_template:
 # Authorization
 
 headers = {
-    "X-Apikey": "643e2c5e7896be9df73b863b09e5e798ddc92275eb0a31a390122f71052e7068"
+    "X-Apikey": "apikey"
 }
 # Make the API call
 response = requests.request(method.upper(), url, headers=headers)
